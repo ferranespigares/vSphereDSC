@@ -306,4 +306,39 @@ class VmwDatacenter
         }    
     }
 #endregion
+
+[DscResource()]
+class VmwRole
+{
+#region Properties for VmwRole
+    [DscProperty(Key)]
+    [string]$Name
+    [DscProperty()]
+    [Ensure]$Ensure
+    [DscProperty(Mandatory)]
+    [string]$vServer
+    [DscProperty(Mandatory)]
+    [PSCredential]$vCredential
+    [DscProperty()]
+    hidden[String]$vSessionId
+#endregion    
+
+#region DSC Functions for VmwRole
+    [void]Set()
+    {
+
+    }
+    [bool]Test()
+    {
+        return $true
+    }
+    [VmwRole]Get()
+    {
+        return $this.GetVmwRole()
+    }
+#endregion
+
+#region VmwRole Helper Functions
+#endregion
+}
 }
